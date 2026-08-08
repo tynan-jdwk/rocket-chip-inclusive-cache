@@ -37,7 +37,7 @@ case class InclusiveCacheParams(
   physicalFilter: Option[PhysicalFilterParams] = None,
   hintsSkipProbe: Boolean = false, // do hints probe the same client
   bankedControl: Boolean = false, // bank the cache ctrl with the cache banks
-  ctrlAddr: Option[Int] = Some(InclusiveCacheParameters.L2ControlAddress),
+  ctrlAddr: Option[BigInt] = Some(InclusiveCacheParameters.L2ControlAddress),
   ctrlXType: ClockCrossingType = NoCrossing, // crossing between cbus and the L2's (sbus-clocked) control ports
   // Interior/Exterior refer to placement either inside the Scheduler or outside it
   // Inner/Outer refer to buffers on the front (towards cores) or back (towards DDR) of the L2
@@ -55,7 +55,7 @@ class WithInclusiveCache(
   subBankingFactor: Int = 4,
   hintsSkipProbe: Boolean = false,
   bankedControl: Boolean = false,
-  ctrlAddr: Option[Int] = Some(InclusiveCacheParameters.L2ControlAddress),
+  ctrlAddr: Option[BigInt] = Some(InclusiveCacheParameters.L2ControlAddress),
   ctrlXType: ClockCrossingType = NoCrossing,
   writeBytes: Int = 8
 ) extends Config((site, here, up) => {
