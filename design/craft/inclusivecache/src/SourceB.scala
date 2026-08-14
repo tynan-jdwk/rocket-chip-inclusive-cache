@@ -74,7 +74,7 @@ class SourceB(params: InclusiveCacheParameters) extends Module
     val param = Mux(!busy, io.req.bits.param, RegEnable(io.req.bits.param, io.req.fire))
 
     b.bits.opcode  := TLMessages.Probe
-    b.bits.param   := param
+    b.bits.param   :<= param.squeeze
     b.bits.size    := params.offsetBits .U
     b.bits.source  := params.clientSource(next)
     b.bits.address := params.expandAddress(tag, set, 0.U)
